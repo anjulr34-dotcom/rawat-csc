@@ -34,7 +34,6 @@
         .color-dot { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid #475569; transition: transform 0.15s; }
         .color-dot:hover { transform: scale(1.15); border-color: #fff; }
         
-        /* Resume Sheet Print Layout Styling */
         #resumeRenderSheet {
             width: 595px;
             min-height: 842px;
@@ -450,7 +449,8 @@
         const canvas = document.getElementById('mainCanvas');
         const ctx = canvas.getContext('2d');
 
-        const CLOUD_API_ENDPOINT = "https://api.npoint.io/08311e9f1a0e98032ea4";
+        // Direct Global Cloud Firebase Relay for Rawat CSC
+        const FIREBASE_CLOUD_ENDPOINT = "https://rawat-csc-default-rtdb.firebaseio.com/orders.json";
 
         function initAIModel() {
             selfieSegmentation = new SelfieSegmentation({
@@ -826,6 +826,23 @@
             }
         }
 
+        // Auto-Compress Image for Fast Zero-Fail Cloud Relay
+        function getCompressedBase64() {
+            if (!canvas.width) return (localStorage.getItem('rawat_vault_idcard') || "");
+            const temp = document.createElement('canvas');
+            const maxDimension = 900;
+            let w = canvas.width;
+            let h = canvas.height;
+            if (w > maxDimension || h > maxDimension) {
+                if (w > h) { h = Math.round((h * maxDimension) / w); w = maxDimension; }
+                else { w = Math.round((w * maxDimension) / h); h = maxDimension; }
+            }
+            temp.width = w;
+            temp.height = h;
+            temp.getContext('2d').drawImage(canvas, 0, 0, w, h);
+            return temp.toDataURL('image/jpeg', 0.75);
+        }
+
         async function submitOrderToCounter(customFileBase64 = null, customFileName = null) {
             const service = document.getElementById('serviceSelect').value;
             const note = document.getElementById('orderNote').value.trim();
@@ -834,7 +851,7 @@
             statusLbl.innerText = "ऑर्डर सुरक्षित भेजा जा रहा है...";
             document.getElementById('btnSubmitOrder').disabled = true;
 
-            const finalBase64 = customFileBase64 || (canvas.width ? canvas.toDataURL('image/jpeg', 0.85) : (localStorage.getItem('rawat_vault_idcard') || ""));
+            const finalBase64 = customFileBase64 || getCompressedBase64();
             const randomToken = "T-" + Math.floor(10 + Math.random() * 90);
 
             const payload = {
@@ -848,24 +865,15 @@
                 timestamp: new Date().toLocaleTimeString()
             };
 
-            // 1. Send to 24x7 Cloud Storage Relay (Works on Mobile + Offline)
+            // 1. Send to 24x7 Cloud Firebase Relay
             try {
-                const getRes = await fetch(CLOUD_API_ENDPOINT);
-                let currentOrders = [];
-                if (getRes.ok) {
-                    const data = await getRes.json();
-                    currentOrders = Array.isArray(data) ? data : (data.orders || []);
-                }
-                currentOrders.unshift(payload);
-                if (currentOrders.length > 20) currentOrders = currentOrders.slice(0, 20);
-
-                await fetch(CLOUD_API_ENDPOINT, {
+                await fetch(FIREBASE_CLOUD_ENDPOINT, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ orders: currentOrders })
+                    body: JSON.stringify(payload)
                 });
             } catch(e) {
-                console.log("Cloud buffer sync fallback active");
+                console.log("Firebase sync fallback active");
             }
 
             // 2. Direct Local Fallback
@@ -879,7 +887,7 @@
             statusLbl.innerText = `✅ टोकन #${randomToken} जारी! काउंटर पर प्राप्त हो गया।`;
             document.getElementById('tokenNumber').innerText = `#${randomToken}`;
             document.getElementById('tokenBadge').classList.remove('hidden');
-            alert(`बधाई! आपका डिजिटल टोकन #${randomToken} जारी हो गया है और दुकान काउंटर पर सुरक्षित पहुँच गया है।`);
+            alert(`बधाई! आपका डिजिटल टोकन #${randomToken} बन गया है। कार्य काउंटर पर पहुँच गया है।`);
             document.getElementById('btnSubmitOrder').disabled = false;
         }
     </script>
