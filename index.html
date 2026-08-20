@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rawat CSC - Uttarakhand Smart Citizen Portal & Autonomous AI Studio</title>
-    <!-- Tailwind CSS & FontAwesome Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google MediaPipe Autonomous AI Engine (Zero PC Dependency) -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js" crossorigin="anonymous"></script>
     
-    <!-- HTML2Canvas & JSPDF for PDF & Image Resume Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -49,7 +46,6 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen pb-24 font-sans antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- Top Navigation -->
     <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 px-4 py-3 shadow-lg">
         <div class="max-w-xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-2">
@@ -72,7 +68,6 @@
         </div>
     </header>
 
-    <!-- UK Bharti Ticker -->
     <div class="bg-blue-950/60 border-b border-blue-900/50 py-1.5 px-3 overflow-hidden text-xs text-blue-300 flex items-center">
         <span class="bg-red-600 text-white font-bold px-1.5 py-0.5 rounded text-[10px] mr-2 shrink-0 animate-pulse">UK LIVE</span>
         <marquee class="font-medium" scrollamount="4">
@@ -82,7 +77,6 @@
 
     <main class="max-w-xl mx-auto p-4 space-y-5">
 
-        <!-- 1. Customer Login Card -->
         <section id="loginSection" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 shadow-xl space-y-4">
             <div class="text-center space-y-1">
                 <h2 class="text-lg font-bold text-white">👤 ग्राहक लॉगिन / डिजिटल पास</h2>
@@ -97,10 +91,8 @@
             </div>
         </section>
 
-        <!-- Main Workspace -->
         <div id="mainWorkspace" class="hidden space-y-5">
 
-            <!-- Profile Bar & Live Token Badge -->
             <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 flex justify-between items-center">
                 <div>
                     <p class="text-[11px] text-slate-400">लॉगिन सदस्य:</p>
@@ -113,7 +105,6 @@
                 <button onclick="logoutSession()" class="text-xs text-rose-400 hover:underline">लॉगआउट</button>
             </div>
 
-            <!-- 2. UTTARAKHAND LIVE NOTIFICATIONS -->
             <section class="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <div class="flex items-center space-x-2">
@@ -123,21 +114,21 @@
                     <span class="text-[10px] bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded font-bold border border-yellow-500/20">Updated</span>
                 </div>
                 <div class="grid grid-cols-1 gap-2 text-xs">
-                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between items-center">
                         <div>
                             <p class="font-bold text-slate-200">UKSSSC / UKPSC Latest Bharti</p>
                             <p class="text-[10px] text-slate-400">12th / Graduate पास आवेदन चालू</p>
                         </div>
                         <button onclick="selectServiceForUK('UKSSSC / UKPSC Bharti Form')" class="bg-blue-600 hover:bg-blue-500 text-white px-2.5 py-1 rounded-lg text-[11px] font-bold">फॉर्म भरें</button>
                     </div>
-                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between items-center">
                         <div>
                             <p class="font-bold text-slate-200">e-District UK आय / जाति / निवास</p>
                             <p class="text-[10px] text-slate-400">सरकारी प्रमाण पत्र ऑनलाइन जारी</p>
                         </div>
                         <button onclick="selectServiceForUK('Income / Caste / Domicile Certificate UK')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-1 rounded-lg text-[11px] font-bold">आवेदन करें</button>
                     </div>
-                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between items-center">
                         <div>
                             <p class="font-bold text-slate-200">UK Bhulekh (भूलेख / खतौनी नकल)</p>
                             <p class="text-[10px] text-slate-400">जमीन की खतौनी 2 मिनट में प्राप्त करें</p>
@@ -147,7 +138,6 @@
                 </div>
             </section>
 
-            <!-- 3. ALL-IN-ONE EDITING STUDIO (AI BG, FILTERS, SLIDERS, CROPPING) -->
             <section class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <div class="flex items-center space-x-2">
@@ -171,7 +161,6 @@
                         </div>
                     </div>
 
-                    <!-- 1-Click Background Colors -->
                     <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-3">
                         <div class="flex justify-between items-center">
                             <span class="text-[11px] font-bold text-yellow-400 uppercase tracking-wide">🎨 1-क्लिक बैकग्राउंड कलर बदलें:</span>
@@ -196,7 +185,6 @@
                         </div>
                     </div>
 
-                    <!-- 1-Click Pro Filters -->
                     <div>
                         <span class="text-[11px] font-bold text-slate-300 block mb-2 uppercase tracking-wide">⚡ 1-Click Pro Filters</span>
                         <div class="grid grid-cols-3 gap-2 text-xs">
@@ -209,7 +197,6 @@
                         </div>
                     </div>
 
-                    <!-- Manual Fine-Tune Sliders -->
                     <div class="space-y-3 bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs">
                         <div>
                             <div class="flex justify-between text-slate-400 mb-1">
@@ -234,7 +221,6 @@
                         </div>
                     </div>
 
-                    <!-- Quick Crop & Ratios -->
                     <div class="flex gap-2">
                         <button onclick="cropToRatio(3.5, 4.5)" class="flex-1 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold">🤵 3.5x4.5 Passport</button>
                         <button onclick="cropToRatio(10, 6.3)" class="flex-1 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold">💳 Card Ratio</button>
@@ -244,7 +230,6 @@
                 </div>
             </section>
 
-            <!-- 4. ADVANCED PHOTO RESUME STUDIO (PDF, WORD, IMAGE EXPORT) -->
             <section class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <div class="flex items-center space-x-2">
@@ -255,7 +240,6 @@
                 </div>
 
                 <div class="space-y-3 text-xs">
-                    <!-- Photo Picker for Resume -->
                     <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex items-center gap-3">
                         <div id="resumePhotoPreviewBox" class="w-16 h-20 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center overflow-hidden shrink-0">
                             <i class="fa-solid fa-user text-slate-600 text-xl" id="resumePhotoPlaceholder"></i>
@@ -307,7 +291,6 @@
                         <textarea id="resAddress" placeholder="गाँव, पोस्ट, तहसील, जिला, पिनकोड (उत्तराखंड)" rows="2" class="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white"></textarea>
                     </div>
 
-                    <!-- Resume Export & Download Grid -->
                     <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2">
                         <span class="text-[11px] font-bold text-yellow-400 block uppercase tracking-wide">📥 खुद डाउनलोड करें (Download for Yourself):</span>
                         <div class="grid grid-cols-3 gap-2">
@@ -323,7 +306,6 @@
                         </div>
                     </div>
 
-                    <!-- Send Resume to Counter Options -->
                     <div class="pt-1">
                         <button onclick="prepareAndSendResumeToCounter()" class="w-full bg-purple-600 hover:bg-purple-500 font-bold py-3 rounded-xl text-white shadow-lg shadow-purple-600/20 flex items-center justify-center gap-2 text-sm transition">
                             <i class="fa-solid fa-paper-plane"></i> यह बायोडाटा काउंटर पर प्रिंट हेतु भेजें ⚡
@@ -332,7 +314,6 @@
                 </div>
             </section>
 
-            <!-- 5. CUSTOMER OFFLINE DOCUMENT LOCKER -->
             <section class="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-2">
                     <div class="flex items-center space-x-2">
@@ -343,8 +324,8 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 text-xs">
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-center space-y-1.5">
-                        <span class="text-[10px] font-bold text-slate-300 block">🪪 आधार कार्ड (Aadhaar)</span>
-                        <input type="file" id="vaultAadhaar" accept="image/*" onchange="saveDocToVault('aadhaar', event)" class="hidden">
+                        <span class="text-[10px] font-bold text-slate-300 block">🪪 पहचान पत्र (ID Card)</span>
+                        <input type="file" id="vaultAadhaar" accept="image/*" onchange="saveDocToVault('idcard', event)" class="hidden">
                         <button onclick="document.getElementById('vaultAadhaar').click()" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-[11px] font-semibold text-blue-400">सेव करें</button>
                         <span id="statusVaultAadhaar" class="text-[9px] text-slate-500 block">खाली है</span>
                     </div>
@@ -357,7 +338,6 @@
                 </div>
             </section>
 
-            <!-- 6. SEND DIRECTLY TO RAWAT CSC COUNTER -->
             <section class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl space-y-4">
                 <div class="flex items-center space-x-2 border-b border-slate-800 pb-3">
                     <i class="fa-solid fa-paper-plane text-emerald-400"></i>
@@ -372,7 +352,7 @@
                         <option value="UKSSSC / UKPSC Bharti Form">📝 उत्तराखंड सरकारी भर्ती फॉर्म</option>
                         <option value="Income / Caste / Domicile Certificate UK">📄 आय / जाति / निवास प्रमाण पत्र (UK)</option>
                         <option value="UK Bhulekh Khatauni Print">📑 भूलेख खतौनी प्रिंट</option>
-                        <option value="PVC Plastic Card Print">💳 PVC कार्ड प्रिंट (Aadhaar/PAN/Voter)</option>
+                        <option value="PVC Plastic Card Print">💳 PVC कार्ड प्रिंट (Smart ID/Voter)</option>
                     </select>
                 </div>
 
@@ -389,10 +369,8 @@
         </div>
     </main>
 
-    <!-- HIDDEN PROFESSIONAL RESUME TEMPLATE (Used for PDF, Image & Word generation) -->
     <div id="hiddenResumeContainer" class="fixed -left-[9999px] top-0">
         <div id="resumeRenderSheet" class="p-8 border border-gray-300">
-            <!-- Header with Photo -->
             <div class="flex justify-between items-start border-b-2 border-slate-800 pb-4 mb-5">
                 <div>
                     <h1 id="resTplName" class="text-2xl font-bold uppercase tracking-wider text-slate-900">YOUR NAME</h1>
@@ -405,7 +383,6 @@
                 </div>
             </div>
 
-            <!-- Personal Details -->
             <div class="mb-4">
                 <h2 class="text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-800 px-2 py-1 border-l-4 border-blue-600 mb-2">Personal Details / व्यक्तिगत विवरण</h2>
                 <div class="grid grid-cols-2 gap-y-1 text-xs text-slate-700 px-2">
@@ -416,25 +393,21 @@
                 </div>
             </div>
 
-            <!-- Education -->
             <div class="mb-4">
                 <h2 class="text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-800 px-2 py-1 border-l-4 border-blue-600 mb-2">Educational Qualifications / शैक्षणिक योग्यता</h2>
                 <div id="resTplEdu" class="text-xs text-slate-700 px-2 whitespace-pre-line leading-relaxed">-</div>
             </div>
 
-            <!-- Experience & Skills -->
             <div class="mb-4">
                 <h2 class="text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-800 px-2 py-1 border-l-4 border-blue-600 mb-2">Experience & Skills / अनुभव व कौशल</h2>
                 <div id="resTplExp" class="text-xs text-slate-700 px-2 whitespace-pre-line leading-relaxed">-</div>
             </div>
 
-            <!-- Address -->
             <div class="mb-5">
                 <h2 class="text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-800 px-2 py-1 border-l-4 border-blue-600 mb-2">Permanent Address / स्थाई पता</h2>
                 <div id="resTplAddress" class="text-xs text-slate-700 px-2 whitespace-pre-line leading-relaxed">-</div>
             </div>
 
-            <!-- Declaration -->
             <div class="border-t border-gray-200 pt-3 text-[10px] text-slate-500">
                 <p>Declaration: I hereby declare that all the information provided above is true and correct to the best of my knowledge.</p>
                 <div class="flex justify-between items-center mt-6 text-xs text-slate-800 font-semibold px-2">
@@ -445,12 +418,10 @@
         </div>
     </div>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
     <a href="javascript:void(0)" onclick="openWhatsAppChat()" class="fixed bottom-5 right-5 bg-emerald-500 hover:bg-emerald-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 z-50 text-2xl transition hover:scale-110">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- USER GUIDE MODAL -->
     <div id="manualModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-5 space-y-4 shadow-2xl max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-800 pb-3">
@@ -479,7 +450,6 @@
         const canvas = document.getElementById('mainCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Initialize MediaPipe AI Model
         function initAIModel() {
             selfieSegmentation = new SelfieSegmentation({
                 locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}`
@@ -557,7 +527,6 @@
             reader.readAsDataURL(file);
         }
 
-        // Background Color AI Trigger
         async function changeBackgroundTo(hexColor) {
             if (!backupOriginal.src) return;
             selectedBgColor = hexColor;
@@ -695,7 +664,6 @@
             link.click();
         }
 
-        // Resume Photo Upload Handler
         function handleResumePhotoUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -707,7 +675,6 @@
                 imgElem.classList.remove('hidden');
                 document.getElementById('resumePhotoPlaceholder').classList.add('hidden');
 
-                // Update Template Img
                 const tplImg = document.getElementById('resTplImg');
                 tplImg.src = resumePhotoData;
                 tplImg.classList.remove('hidden');
@@ -716,7 +683,6 @@
             reader.readAsDataURL(file);
         }
 
-        // Fill Hidden Template with Form Data
         function populateResumeTemplate() {
             document.getElementById('resTplName').innerText = currentUser.name.toUpperCase();
             document.getElementById('resTplPhone').innerText = currentUser.phone;
@@ -729,7 +695,6 @@
             document.getElementById('resTplAddress').innerText = document.getElementById('resAddress').value.trim() || 'Not Specified';
         }
 
-        // 1. Download Resume as PDF
         async function downloadResumeAsPDF() {
             if (!validateResumeInputs()) return;
             populateResumeTemplate();
@@ -747,7 +712,6 @@
             pdf.save(`${currentUser.name}_Resume.pdf`);
         }
 
-        // 2. Download Resume as Word (.doc)
         function downloadResumeAsWord() {
             if (!validateResumeInputs()) return;
             populateResumeTemplate();
@@ -796,7 +760,6 @@
             a.click();
         }
 
-        // 3. Download Resume as Image (JPG)
         async function downloadResumeAsImage() {
             if (!validateResumeInputs()) return;
             populateResumeTemplate();
@@ -819,7 +782,6 @@
             return true;
         }
 
-        // Send Ready Resume to Counter (Supports PDF / Word / Image Selection)
         async function prepareAndSendResumeToCounter() {
             if (!validateResumeInputs()) return;
             populateResumeTemplate();
@@ -839,7 +801,6 @@
             submitOrderToCounter(resumeGeneratedDataUrl, `${currentUser.name}_Resume.${format.toLowerCase() === 'word' ? 'doc' : (format.toLowerCase() === 'pdf' ? 'pdf' : 'jpg')}`);
         }
 
-        // Vault Handlers
         function saveDocToVault(type, event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -853,7 +814,7 @@
         }
 
         function loadVaultStatus() {
-            if (localStorage.getItem('rawat_vault_aadhaar')) {
+            if (localStorage.getItem('rawat_vault_idcard')) {
                 document.getElementById('statusVaultAadhaar').innerText = '✅ सेव्ड';
                 document.getElementById('statusVaultAadhaar').classList.add('text-emerald-400');
             }
@@ -863,7 +824,6 @@
             }
         }
 
-        // Final Order Submission to Counter
         function submitOrderToCounter(customFileBase64 = null, customFileName = null) {
             const service = document.getElementById('serviceSelect').value;
             const note = document.getElementById('orderNote').value.trim();
@@ -872,10 +832,11 @@
             statusLbl.innerText = "ऑर्डर भेजा जा रहा है...";
             document.getElementById('btnSubmitOrder').disabled = true;
 
-            const finalBase64 = customFileBase64 || (canvas.width ? canvas.toDataURL('image/jpeg', 0.90) : (localStorage.getItem('rawat_vault_aadhaar') || ""));
+            const finalBase64 = customFileBase64 || (canvas.width ? canvas.toDataURL('image/jpeg', 0.90) : (localStorage.getItem('rawat_vault_idcard') || ""));
             const randomToken = "T-" + Math.floor(10 + Math.random() * 90);
 
             const payload = {
+                tokenId: randomToken,
                 customerName: currentUser.name,
                 customerPhone: currentUser.phone,
                 service: service,
